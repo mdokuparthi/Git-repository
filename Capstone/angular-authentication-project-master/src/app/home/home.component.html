@@ -1,0 +1,28 @@
+<header>
+  <img style="object-fit:fill; padding-left: 25px;" src="https://www.shopmyexchange.com/assets/static/savings-center/img/TB-savings-center-banner01.jpg"/>
+</header>
+<div *ngIf="notify" class="alert alert-success container marge">
+    {{ notify }}
+</div>
+<!-- <p class="container">home page!</p> -->
+
+<br/><br/><br/><br/>
+
+<div class="container">
+  
+<div class="row">
+    <div *ngFor="let product of products" class="col-lg-4 col-md-4 d-flex align-items-stretch">
+        <div class="member">
+          <div class="member-img">
+                <img src="assets/images/{{product.photo}}" width="250" height="250">
+            <div class="social"></div>
+          </div><br/>
+          <div class="member-info" style="text-align: center;">
+            <h5 style="font-size: larger;font-weight: 600;">{{product.name}}</h5>
+            <h5 ><span>Rs.</span>{{product.price}}  <span>/-</span><strike style="color: gray;">Rs.{{product.price*1.5}}/-</strike></h5>
+            <a [routerLink]="['/cart', { id:product.id }]">Buy Now</a><br/><br/>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

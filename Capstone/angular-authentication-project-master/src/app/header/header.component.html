@@ -1,0 +1,55 @@
+<nav class="navbar navbar-light navbar-expand-lg" style="background-color:cadetblue;">
+  <div class="container">
+    <h1 routerLink="/" class="navbar-brand" routerLinkActive="active" style="font-size: largest;font-weight: bolder;">ELECTRONIX</h1>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"style="font-weight:400;">
+      
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink='home'>Products</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" routerLink='orders'>Orders</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink='cart'>Cart</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink='admin'>Admin</a>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav ml-auto">
+        <ng-container *ngIf="!auth.isAuthenticated()">
+          <li class="nav-item">
+            <a routerLink="/auth/login" class="nav-link" routerLinkActive="active">
+              Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/auth/register" class="nav-link">
+              Register
+            </a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="auth.isAuthenticated()">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/companies-list']">Manage Companies</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/services']">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="font-weight: bold;font-style: italic;">
+              {{ auth.getUsername() }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pointer" (click)="logout()">
+              Logout
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>
